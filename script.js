@@ -3,6 +3,9 @@
     // description
     // button 'start quiz'
 
+// click event for highscore view
+    // local storage of high score
+
 // click event for start quiz
     // timer in click event
     // pulls question function
