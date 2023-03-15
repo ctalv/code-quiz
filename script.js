@@ -1,6 +1,6 @@
-// declare root variable
-// declare title page variable
-// declare question variable
+// declare id root variable
+// declare class title page variable
+// declare class question variable
 // declare counter variable
 
 // function init() to describe start page which will have
@@ -16,11 +16,13 @@
     // pulls questions() function
 
 // function questions()
+    // create h2 child to question var
+    // create ul child to question var
     // index through preset questions with for loop (can be in order; will add random later)
         // var currentQuestion = objectQuestions[i] 
         // display question using html = currentQuestion
         // display options
-        // use append
+        // create li children to ul
         // at options have click events on each 
         // pull answer() function
     // counter
