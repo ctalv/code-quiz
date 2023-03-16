@@ -53,23 +53,29 @@
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
+var viewHighScoreEL = document.querySelector('#high-scores');
+var highScorePageEl = document.querySelector(".wins-losses")
 var counter = 0;
 
 // function init() to describe start page which will have
-// function init() {
-// startPage();
-// }
+function init() {
+startPage();
+}
 
-// function startPage () {
+function startPage () {
+    // titleEl = document.querySelector('#title-page');
     var h1El = titleEl.childNodes[0];
-    // var textEl = titleEl.children.eq(1);
-    // var startEl = titleEl.children.eq(2); 
+    var pEl = titleEl.childNodes[1];
+    var startButton = document.createElement('button'); 
+
+    // document.titleEl.appendChild(startButton)
+
+    h1El.textContent = "Code Quiz";
+    pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Press the start button when you are ready!"
+    startButton.textContent = "Start"
 
     
-    // h1El.textContent = "Code Quiz";
-    console.log(h1El);
-    // h1El.
-// }
+}
 
 
 // click event for highscore view
