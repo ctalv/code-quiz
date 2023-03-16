@@ -50,20 +50,26 @@
  
 
 // declare variables
-var rootEl = $('#root');
-var titleEl = $('.title-page');
-var questionsEl = $('.questions');
+var rootEl = document.querySelector('#root');
+var titleEl = document.querySelector('#title-page');
+var questionsEl = document.querySelector('#questions');
 var counter = 0;
 
 // function init() to describe start page which will have
-function init() {
-    var h1El = titleEl.children().eq[0];
-    var textEl = titleEl.children().eq(1);
-    var startEl = titleEl.children().eq(2); 
+// function init() {
+// startPage();
+// }
 
-    h1El.text('Code Quiz')
-    h1El.attr('class','fancy')
-}
+// function startPage () {
+    var h1El = titleEl.childNodes[0];
+    // var textEl = titleEl.children.eq(1);
+    // var startEl = titleEl.children.eq(2); 
+
+    
+    h1El.textContent = "Code Quiz";
+    console.log(h1El);
+    // h1El.
+// }
 
 
 // click event for highscore view
