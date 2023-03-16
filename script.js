@@ -49,19 +49,22 @@
 // init() at bottom to call start page
  
 
-// declare id root variable
-// declare class title page variable
-// declare class question variable
-// declare counter variable
+// declare variables
 var rootEl = $('#root');
 var titleEl = $('.title-page');
 var questionsEl = $('.questions');
 var counter = 0;
 
 // function init() to describe start page which will have
-    // title
-    // description
-    // button 'start quiz'
+function init() {
+    var h1El = titleEl.children().eq[0];
+    var textEl = titleEl.children().eq(1);
+    var startEl = titleEl.children().eq(2); 
+
+    h1El.text('Code Quiz')
+    h1El.attr('class','fancy')
+}
+
 
 // click event for highscore view
     // local storage of high score
@@ -102,3 +105,4 @@ var counter = 0;
         // without erasing previous
 
 // init() at bottom to call start page
+init();
