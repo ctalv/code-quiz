@@ -95,7 +95,7 @@ function startPage() {
 
 function questions() {
     rootEl.removeAttribute(titleEl);
-    document.querySelector('main').remove(titleEl);
+    titleEl.remove();
 }
 // function questions()
 // create h2 child to question var
