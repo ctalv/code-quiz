@@ -82,24 +82,41 @@ function startPage() {
 }
 
 
-
-
-
 // click event for highscore view
 // local storage of high score
 
-// click event for start quiz
-// timer starts
-// pulls questions() function
-
+// questions
 
 function questions() {
     rootEl.removeAttribute(titleEl);
     titleEl.remove();
+    setTime()
+
+
+
 }
+
+var timer = 75
+var timerEl = document.querySelector('.timer');
+timerEl.textContent = timer;
+
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function () {
+        secondsLeft--; // subtract one
+        timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+        if (secondsLeft === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            // Calls function to create and append image
+            sendMessage();
+        }
+
+    }, 1000);
+}
+
 // function questions()
-// create h2 child to question var
-// create ul child to question var
 // index through preset questions with for loop (can be in order; will add random later)
 // var currentQuestion = objectQuestions[i] 
 // display question using html = currentQuestion
