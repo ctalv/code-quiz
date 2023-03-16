@@ -103,14 +103,14 @@ timerEl.textContent = timer;
 function setTime() {
     // Sets interval in variable
     var timerInterval = setInterval(function () {
-        secondsLeft--; // subtract one
-        timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+        timer--; // subtract one
+        timerEl.textContent = timer;
 
-        if (secondsLeft === 0) {
+        if (timer === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Calls function to create and append image
-            sendMessage();
+            // Add message
+            // Call gameover function
         }
 
     }, 1000);
