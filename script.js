@@ -64,17 +64,18 @@ startPage();
 
 function startPage () {
     // titleEl = document.querySelector('#title-page');
-    var h1El = titleEl.childNodes[0];
-    var pEl = titleEl.childNodes[1];
+    var h1El = titleEl.childNodes[1];
+    var pEl = titleEl.childNodes[2];
     var startButton = document.createElement('button'); 
 
     // document.titleEl.appendChild(startButton)
 
     h1El.textContent = "Code Quiz";
     pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Press the start button when you are ready!"
-    startButton.textContent = "Start"
+    startButton.innerText = 'Start'
 
-    
+    // document.pEl.appendChild()
+    titleEl.insertBefore(startButton, null)
 }
 
 
