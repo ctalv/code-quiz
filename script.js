@@ -86,14 +86,46 @@ function startPage() {
 // local storage of high score
 
 // questions
+var qA = [
+    {
+        question: 'Test Question 1 What is CSS?',
+        answer: 'Cascading Style Sheets',
+        choices: ['Cascading Style Sheets', 'Caca Shoe Stuff','Claire Stays Salty','Crap Something Super']
+    }, 
+    {
+        question: 'What is my name?',
+        answer: 'Claire',
+        choices: ['Christie','Amy','Warren','Claire']
+    }]
+
+
 
 function questions() {
     rootEl.removeAttribute(titleEl);
     titleEl.remove();
     setTime()
+    for (var i = 0; i < qA.length; i++) {
+        var currentQ = qA[i];
+        console.log(currentQ.question);
+        for (var j = 0; j <qA.choices.length; i++) {
+            var event = qA.choices[i]
+            
+            questions.amendChild()
+
+        }
+    }
 
 
+// index through preset questions with for loop (can be in order; will add random later)
+// var currentQuestion = objectQuestions[i] 
+// display question using html = currentQuestion
+// display options
+// create li children to ul
+// at options have click events on each 
+// pull answer() function
+// counter
 
+    
 }
 
 var timer = 75
@@ -109,33 +141,22 @@ function setTime() {
         if (timer === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Add message
-            // Call gameover function
+            // endGame()
         }
 
     }, 1000);
 }
 
-// function questions()
-// index through preset questions with for loop (can be in order; will add random later)
-// var currentQuestion = objectQuestions[i] 
-// display question using html = currentQuestion
-// display options
-// create li children to ul
-// at options have click events on each 
-// pull answer() function
-// counter
+function answerChoice() {
+    // if user click === answer
+        // add to score
+        // make variable correct
+    // else (wrong or user click !=== answer)
+        // deduct 15 seconds
+        // make variable wrong
+    // display what answer was
+}
 
-// function answer() 
-// click event on the selected answer (not in this function)
-// if user select correct
-// logs score
-// sets variable to correct
-// else 
-// takes off 15 seconds from clock
-// sets variable to wrong
-// continues to next question (not in this function)
-// display answer below (now new) question
 
 // function endGame() to
 // tell user score
