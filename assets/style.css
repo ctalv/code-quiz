@@ -26,4 +26,9 @@ main {
     justify-content: center;
   }
   
-  
+  #title-page #questions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

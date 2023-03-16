@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code Quiz</title>
-    <!-- <link rel="stylesheet" href="./assets/reset.css"> -->
-    <link rel="stylesheet" href="./assets/style.css">
-  </head>
-  <body id="root" >
-    <div class="wins-losses"></div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Code Quiz</title>
+  <!-- <link rel="stylesheet" href="./assets/reset.css"> -->
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body id="root">
+  <nav>
+    <div id="high-scores">View High Score</div>
+    <div class="timer">75</div>
+  </nav>
+  <div class="wins-losses">
     <h2></h2>
     <ul></ul>
-    <div id="title-page"></div>
-      <h1></h1>
-      <p></p>
-      <button class="start"></button>
-    <div id="questions"></div>
+  </div>
+  <main>
+    <div id="title-page">
+      <h1>Code Quiz</h1>
+      <p>Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers
+        deduct 15 second from your score. Press the start button when you are ready!</p>
+      <button class="start">Start</button>
+    </div>
+    <div id="questions">
       <h2></h2>
-      <ul></ul> 
-      <!-- click events for answer choices -->
-      <div class="timer"></div>
-	<script src="script.js"></script>
-  </body>
+      <ul></ul>
+    </div>
+  </main>
+  <!-- click events for answer choices -->
+
+  <script src="script.js"></script>
+</body>
+
 </html>
