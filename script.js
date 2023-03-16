@@ -66,7 +66,7 @@ var counter = 0;
     // var startEl = titleEl.children.eq(2); 
 
     
-    h1El.textContent = "Code Quiz";
+    // h1El.textContent = "Code Quiz";
     console.log(h1El);
     // h1El.
 // }
