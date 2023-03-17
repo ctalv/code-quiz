@@ -186,12 +186,14 @@ function questions() {
     for (var i = 0; i < qA.length; i++) {
         var currentQ = qA[i];
         console.log(currentQ.question);
-        for (var j = 0; j < qA.choices.length; i++) {
+        for (var j = 0; j < currentQ.choices.length; j++) {
             var h2El = questionsEl.childNodes[1];
-            
-            h2El.textContent = qA.question
+            var olEl = questionsEl.childNodes[2];
 
-            console.log(qA.choices[i])
+            h2El.textContent = currentQ.question
+
+
+            console.log(currentQ.question);
 
         }
     }
