@@ -170,55 +170,73 @@ var qA = [
         answer: 'An action triggered by user interaction with a web page'
     }]
 
-    var test = qA[1]
-    console.log(qA)
-    console.log(qA[1])
-    console.log(test)
-    console.log(test.question)
-    console.log(test.choices)
-    console.log(test.choices[1])
-
-
 function questions() {
     rootEl.removeAttribute(titleEl);
     titleEl.remove();
     setTime()
     for (var i = 0; i < qA.length; i++) {
-        var currentQ = qA[i];
-        console.log(currentQ.question);
+        var currentQ = qA[1];
+        var h2El = document.querySelector('#questions h2');
+        var olEl = document.querySelector('#questions ol');
+
+        h2El.textContent = currentQ.question;
 
         for (var j = 0; j < currentQ.choices.length; j++) {
-            var h2El = questionsEl.childNodes[1];
-            var olEl = questionsEl.childNodes[2];
+
             var liEl = document.createElement('li')
+            liEl.textContent = currentQ.choices[j];
+            olEl.appendChild(liEl);
+            console.log(currentQ.answer)
+
+            liEl.addEventListener('click', function () {
+                var clicked = this.textContent;
                 
-            console.log(currentQ.choices);
-            console.log(liEl)
-            console.log(currentQ.choices.length)
-            console.log(j)
+                console.log(clicked)
+                if (clicked === currentQ.answer) {
+                    console.log('correct')
+                } else {
+                    console.log('wrong')
+                }
 
-            h2El.textContent = currentQ.question
-            liEl.textContent = currentQ.choices[j]
-            console.log(liEl.textContent)
-            // olEl.appendChild()
-            document.querySelector('ol').appendChild(liEl)
+                console.log(clicked)
+                console.log(currentQ.answer)
+                // if user click === answer
+                // add to score
+                // make variable correct
+                // else (wrong or user click !=== answer)
+                // deduct 15 seconds
+                // make variable wrong
+                // display what answer was
+            })
 
-
+            var g = 'False'
         }
+
+
+        if (g === 'False') {
+            return
+        }
+        
     }
 
 
-    // index through preset questions with for loop (can be in order; will add random later)
-    // var currentQuestion = objectQuestions[i] 
-    // display question using html = currentQuestion
-    // display options
-    // create li children to ul
-    // at options have click events on each 
-    // pull answer() function
-    // counter
+
 
 
 }
+
+
+// index through preset questions with for loop (can be in order; will add random later)
+// var currentQuestion = objectQuestions[i] 
+// display question using html = currentQuestion
+// display options
+// create li children to ul
+// at options have click events on each 
+// pull answer() function
+// counter
+
+
+
 
 var timer = 75
 var timerEl = document.querySelector('.timer');
@@ -240,7 +258,10 @@ function setTime() {
 }
 
 function answerChoice() {
-    
+
+
+
+    console.log('clicked')
     // if user click === answer
     // add to score
     // make variable correct
