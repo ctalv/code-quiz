@@ -86,12 +86,115 @@ function startPage() {
 // local storage of high score
 
 // questions
+var qA = [
+    {
+
+        question: 'Which of the following is NOT a function of HTML?',
+        choices: [
+            'Defining the structure of web pages',
+            'Adding visual styling to web pages',
+            'Creating hyperlinks between web pages',
+            'Displaying text and media content on web pages',
+        ],
+        answer: 'Adding visual styling to web pages'
+
+    },
+    {
+        question: 'What is the primary function of CSS in web development?',
+        choices: [
+            'Defining the structure of web pages',
+            'Adding interactivity to web pages',
+            'Creating hyperlinks between web pages',
+            'Adding visual styling to web pages'
+        ],
+        answer: 'Adding visual styling to web pages'
+    },
+    {
+        question: 'What is JavaScript primarily used for in web development?',
+        choices: [
+            'Defining the structure of web pages',
+            'Adding interactivity to web pages',
+            'Creating hyperlinks between web pages',
+            'Adding visual styling to web pages'
+        ],
+        answer: 'Adding interactivity to web pages'
+    },
+    {
+        question: 'Which of the following CSS techniques can be used to create responsive web design?',
+        choices: [
+            'Media queries',
+            'Class selectors',
+            'Pseudo-classes',
+            'Attribute selectors'
+        ],
+        answer: 'Media queries'
+    },
+    {
+        question: 'Which of the following HTML tags can be used to add JavaScript to a web page?',
+        choices: [
+            '<script>',
+            '<head>',
+            '<body>',
+            '<html>'
+        ],
+        answer: '<script>'
+    },
+    {
+        question: 'Which of the following is an HTML attribute that can be used to specify the location of an external JavaScript file?',
+        choices: [
+            'src',
+            'href',
+            'class',
+            'id'
+        ],
+        answer: 'src'
+    },
+    {
+        question: 'What is the purpose of the HTML <form> element in web development?',
+        choices: [
+            'To define a container for HTML content',
+            'To create a table layout for web pages',
+            'To create input fields for user data',
+            'To add visual styling to web pages'
+        ],
+        answer: 'To create input fields for user data'
+    },
+    {
+        question: 'What is an event in JavaScript?',
+        choices: [
+            'A function that runs automatically',
+            'A conditional statement that controls program flow',
+            'An action triggered by user interaction with a web page',
+            'A loop that iterates over a collection of values'
+        ],
+        answer: 'An action triggered by user interaction with a web page'
+    }]
+
 
 function questions() {
     rootEl.removeAttribute(titleEl);
     titleEl.remove();
     setTime()
+    for (var i = 0; i < qA.length; i++) {
+        var currentQ = qA[i];
+        console.log(currentQ.question);
+        for (var j = 0; j < qA.choices.length; i++) {
+            var event = qA.choices[i]
 
+            questions.amendChild()
+
+        }
+    }
+
+
+    // index through preset questions with for loop (can be in order; will add random later)
+    // var currentQuestion = objectQuestions[i] 
+    // display question using html = currentQuestion
+    // display options
+    // create li children to ul
+    // at options have click events on each 
+    // pull answer() function
+    // counter
 
 
 }
@@ -109,33 +212,22 @@ function setTime() {
         if (timer === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Add message
-            // Call gameover function
+            // endGame()
         }
 
     }, 1000);
 }
 
-// function questions()
-// index through preset questions with for loop (can be in order; will add random later)
-// var currentQuestion = objectQuestions[i] 
-// display question using html = currentQuestion
-// display options
-// create li children to ul
-// at options have click events on each 
-// pull answer() function
-// counter
+function answerChoice() {
+    // if user click === answer
+    // add to score
+    // make variable correct
+    // else (wrong or user click !=== answer)
+    // deduct 15 seconds
+    // make variable wrong
+    // display what answer was
+}
 
-// function answer() 
-// click event on the selected answer (not in this function)
-// if user select correct
-// logs score
-// sets variable to correct
-// else 
-// takes off 15 seconds from clock
-// sets variable to wrong
-// continues to next question (not in this function)
-// display answer below (now new) question
 
 // function endGame() to
 // tell user score
