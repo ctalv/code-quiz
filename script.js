@@ -201,13 +201,13 @@ function questions() {
                     console.log('correct')
                     questionCount++;
                     questionNumber();
-                    h2El.textContent = ''
+                    olEl.textContent = ''
 
                 } else {
                     console.log('wrong')
                     questionCount++;
                     questionNumber();
-                    liEl.textContent = ''
+                    olEl.textContent = ''
                 }
 
             })
