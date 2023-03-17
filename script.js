@@ -173,57 +173,58 @@ var qA = [
 function questions() {
     rootEl.removeAttribute(titleEl);
     titleEl.remove();
-    setTime()
-    for (var i = 0; i < qA.length; i++) {
-        var currentQ = qA[1];
+    setTime();
+
+    var questionCount = 0
+
+    function questionNumber() {
+        // for (var i = 0; i < qA.length; i++) {
+        var currentQ = qA[questionCount];
+
         var h2El = document.querySelector('#questions h2');
         var olEl = document.querySelector('#questions ol');
+        console.log(currentQ)
+        h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
 
-        h2El.textContent = currentQ.question;
 
-        for (var j = 0; j < currentQ.choices.length; j++) {
+        for (var i = 0; i < currentQ.choices.length; i++) {
 
             var liEl = document.createElement('li')
-            liEl.textContent = currentQ.choices[j];
+            liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
             console.log(currentQ.answer)
 
             liEl.addEventListener('click', function () {
-                var clicked = this.textContent;
-                
-                console.log(clicked)
-                if (clicked === currentQ.answer) {
+                var clickedChoice = this.textContent;
+
+                if (clickedChoice === currentQ.answer) {
                     console.log('correct')
+                    questionCount++;
+                    questionNumber();
+                    h2El.textContent = ''
+
                 } else {
                     console.log('wrong')
+                    questionCount++;
+                    questionNumber();
+                    liEl.textContent = ''
                 }
 
-                console.log(clicked)
-                console.log(currentQ.answer)
-                // if user click === answer
-                // add to score
-                // make variable correct
-                // else (wrong or user click !=== answer)
-                // deduct 15 seconds
-                // make variable wrong
-                // display what answer was
             })
 
-            var g = 'False'
         }
 
-
-        if (g === 'False') {
-            return
-        }
-        
     }
 
-
-
-
+    if (questionCount < qA.length) {
+        questionNumber();
+    }
 
 }
+
+
+
+
 
 
 // index through preset questions with for loop (can be in order; will add random later)
