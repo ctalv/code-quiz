@@ -88,16 +88,82 @@ function startPage() {
 // questions
 var qA = [
     {
-        question: 'Test Question 1 What is CSS?',
+        question: 'What is the role of HTML in web development?',
         answer: 'Cascading Style Sheets',
-        choices: ['Cascading Style Sheets', 'Caca Shoe Stuff','Claire Stays Salty','Crap Something Super']
+        choices: [
+            'To style ', 
+            'Caca Shoe Stuff',
+            'Claire Stays Salty',
+            'Crap Something Super']
     }, 
     {
-        question: 'What is my name?',
+        question: 'What is mthe role of CSS in web development?',
         answer: 'Claire',
         choices: ['Christie','Amy','Warren','Claire']
     }]
 
+    question: 'Which of the following is NOT a function of HTML?',
+    choices: [
+'Defining the structure of web pages',
+'Adding visual styling to web pages',
+'Creating hyperlinks between web pages',
+'Displaying text and media content on web pages',
+    ],
+    answer: 'Adding visual styling to web pages'
+
+question: 'What is the primary function of CSS in web development?',
+choices: [
+'Defining the structure of web pages',
+'Adding interactivity to web pages',
+'Creating hyperlinks between web pages',
+'Adding visual styling to web pages'
+],
+answer:''
+
+question: 'What is JavaScript primarily used for in web development?',
+choices: [
+'Defining the structure of web pages',
+'Adding interactivity to web pages',
+'Creating hyperlinks between web pages',
+'Adding visual styling to web pages'
+],
+answer:''
+
+question: 'Which of the following CSS techniques can be used to create responsive web design?',
+choices: [
+'Media queries',
+'Class selectors',
+'Pseudo-classes',
+'Attribute selectors'
+],
+answer:''
+
+question: 'What is the primary difference between server-side and client-side scripting?',
+choices: [
+'Server-side scripting is executed on the client\'s computer, while client-side scripting is executed on the server',
+'Server-side scripting is executed on the server, while client-side scripting is executed on the client\'s computer',
+'Server-side scripting and client-side scripting are the same thing',
+'Server-side scripting and client-side scripting are both executed in the browser'
+],
+answer:''
+
+question: 'How can you optimize web page performance using JavaScript techniques?',
+choices: [
+'By minifying and compressing JavaScript code',
+'By using asynchronous loading for JavaScript resources',
+'By avoiding unnecessary DOM manipulations',
+'All of the above'
+],
+answer:''
+
+question: 'How can you use HTML forms and JavaScript to create interactive user interfaces and validate user input?',
+choices: [
+'By using HTML form elements to create input fields, and using JavaScript to validate user input before submitting the form',
+'By using JavaScript to create custom input elements, and using HTML forms to submit the data',
+'By using CSS to create interactive user interfaces, and using JavaScript to validate user input',
+'None of the above'
+],
+answer:''
 
 
 function questions() {
