@@ -56,7 +56,7 @@ var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
 var viewHighScoreEL = document.querySelector('#high-scores');
-var highScorePageEl = document.querySelector(".wins-losses")
+var highScorePageEl = document.querySelector(".wins-losses");
 var counter = 0;
 
 
@@ -170,6 +170,14 @@ var qA = [
         answer: 'An action triggered by user interaction with a web page'
     }]
 
+    var test = qA[1]
+    console.log(qA)
+    console.log(qA[1])
+    console.log(test)
+    console.log(test.question)
+    console.log(test.choices)
+    console.log(test.choices[1])
+
 
 function questions() {
     rootEl.removeAttribute(titleEl);
@@ -178,10 +186,23 @@ function questions() {
     for (var i = 0; i < qA.length; i++) {
         var currentQ = qA[i];
         console.log(currentQ.question);
-        for (var j = 0; j < qA.choices.length; i++) {
-            var event = qA.choices[i]
 
-            questions.amendChild()
+        for (var j = 0; j < currentQ.choices.length; j++) {
+            var h2El = questionsEl.childNodes[1];
+            var olEl = questionsEl.childNodes[2];
+            var liEl = document.createElement('li')
+                
+            console.log(currentQ.choices);
+            console.log(liEl)
+            console.log(currentQ.choices.length)
+            console.log(j)
+
+            h2El.textContent = currentQ.question
+            liEl.textContent = currentQ.choices[j]
+            console.log(liEl.textContent)
+            // olEl.appendChild()
+            document.querySelector('ol').appendChild(liEl)
+
 
         }
     }
@@ -219,6 +240,7 @@ function setTime() {
 }
 
 function answerChoice() {
+    
     // if user click === answer
     // add to score
     // make variable correct
