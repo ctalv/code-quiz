@@ -189,11 +189,17 @@ function questions() {
         for (var j = 0; j < currentQ.choices.length; j++) {
             var h2El = questionsEl.childNodes[1];
             var olEl = questionsEl.childNodes[2];
+            var liEl = document.createElement('li')
+                
+
+            console.log(liEl)
 
             h2El.textContent = currentQ.question
+            liEl.textContent = currentQ.choices[j]
+            console.log(liEl.textContent)
+            // olEl.appendChild()
+            document.querySelector('ol').appendChild(liEl)
 
-
-            console.log(currentQ.question);
 
         }
     }
