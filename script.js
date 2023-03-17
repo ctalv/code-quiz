@@ -170,6 +170,14 @@ var qA = [
         answer: 'An action triggered by user interaction with a web page'
     }]
 
+    var test = qA[1]
+    console.log(qA)
+    console.log(qA[1])
+    console.log(test)
+    console.log(test.question)
+    console.log(test.choices)
+    console.log(test.choices[1])
+
 
 function questions() {
     rootEl.removeAttribute(titleEl);
@@ -179,9 +187,11 @@ function questions() {
         var currentQ = qA[i];
         console.log(currentQ.question);
         for (var j = 0; j < qA.choices.length; i++) {
-            var event = qA.choices[i]
+            var h2El = questionsEl.childNodes[1];
+            
+            h2El.textContent = qA.question
 
-            questions.amendChild()
+            console.log(qA.choices[i])
 
         }
     }
@@ -219,6 +229,7 @@ function setTime() {
 }
 
 function answerChoice() {
+    
     // if user click === answer
     // add to score
     // make variable correct
