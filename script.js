@@ -170,55 +170,76 @@ var qA = [
         answer: 'An action triggered by user interaction with a web page'
     }]
 
-    var test = qA[1]
-    console.log(qA)
-    console.log(qA[1])
-    console.log(test)
-    console.log(test.question)
-    console.log(test.choices)
-    console.log(test.choices[1])
-
-
 function questions() {
-    rootEl.removeAttribute(titleEl);
     titleEl.remove();
-    setTime()
-    for (var i = 0; i < qA.length; i++) {
-        var currentQ = qA[i];
-        console.log(currentQ.question);
+    setTime();
 
-        for (var j = 0; j < currentQ.choices.length; j++) {
-            var h2El = questionsEl.childNodes[1];
-            var olEl = questionsEl.childNodes[2];
+    var questionCount = 0
+
+    function questionNumber() {
+        // for (var i = 0; i < qA.length; i++) {
+        var currentQ = qA[questionCount];
+
+        var h2El = document.querySelector('#questions h2');
+        var olEl = document.createElement('ol');
+        questionsEl.appendChild(olEl);
+        console.log(currentQ)
+        h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
+
+
+        for (var i = 0; i < currentQ.choices.length; i++) {
+
             var liEl = document.createElement('li')
+            liEl.textContent = currentQ.choices[i];
+            olEl.appendChild(liEl);
+            console.log(olEl.children)
+
+            liEl.addEventListener('click', function () {
+
+                var clickedChoice = this.textContent;
                 
-            console.log(currentQ.choices);
-            console.log(liEl)
-            console.log(currentQ.choices.length)
-            console.log(j)
-
-            h2El.textContent = currentQ.question
-            liEl.textContent = currentQ.choices[j]
-            console.log(liEl.textContent)
-            // olEl.appendChild()
-            document.querySelector('ol').appendChild(liEl)
-
+                console.log(liRemove)
+                if (clickedChoice === currentQ.answer) {
+                    console.log('correct')
+                    var liRemove = olEl.children;
+                    questionCount++;
+                    questionNumber();
+                    olEl.remove();                 
+                } else {
+                    console.log('wrong')
+                    var liRemove = olEl.children;
+                    questionCount++;
+                    questionNumber();
+                    olEl.remove();
+                }
+            })
 
         }
+
     }
 
-
-    // index through preset questions with for loop (can be in order; will add random later)
-    // var currentQuestion = objectQuestions[i] 
-    // display question using html = currentQuestion
-    // display options
-    // create li children to ul
-    // at options have click events on each 
-    // pull answer() function
-    // counter
-
+    if (questionCount < qA.length) {
+        questionNumber();
+    }
 
 }
+
+
+
+
+
+
+// index through preset questions with for loop (can be in order; will add random later)
+// var currentQuestion = objectQuestions[i] 
+// display question using html = currentQuestion
+// display options
+// create li children to ul
+// at options have click events on each 
+// pull answer() function
+// counter
+
+
+
 
 var timer = 75
 var timerEl = document.querySelector('.timer');
@@ -240,7 +261,10 @@ function setTime() {
 }
 
 function answerChoice() {
-    
+
+
+
+    console.log('clicked')
     // if user click === answer
     // add to score
     // make variable correct
