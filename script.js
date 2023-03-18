@@ -58,12 +58,14 @@ var questionsEl = document.querySelector('#questions');
 var enterScoreEl = document.querySelector('#enter-scores');
 var highScorePageEl = document.querySelector("#score-page");
 var viewScoresEl = document.querySelector('.view-scores')
+var mainEl = document.querySelector('main');
 var score = 0;
 
 // function init() to describe start page which will have
 function init() {
     startPage();
     addEventListener.viewScoresEl("click", function() {
+        mainEl.innerHTML = '';
         var highScoreTitleEl = document.querySelector("#score-page h2");
         var listHighScoresEl = document.querySelector("#score-page ol")
     })
@@ -314,7 +316,11 @@ function enterScore () {
             var playAgainEl = document.createElement('button')
             playAgainEl.innerHTML = 'Play Again'
             enterScoreEl.append(playAgainEl)
-            startPage();
+            playAgainEl.addEventListener('click', function(event) {
+                event.preventDefault
+                mainEl.innerHTML = '';
+                startPage();
+            })
         }
         
 
