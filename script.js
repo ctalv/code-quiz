@@ -57,7 +57,6 @@ var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
 var viewHighScoreEL = document.querySelector('#high-scores');
 var highScorePageEl = document.querySelector(".wins-losses");
-var counter = 0;
 
 
 // function init() to describe start page which will have
@@ -197,17 +196,15 @@ function questions() {
             liEl.addEventListener('click', function () {
 
                 var clickedChoice = this.textContent;
+                var rightDisplay = document.createElement('p');
                 
-                console.log(liRemove)
                 if (clickedChoice === currentQ.answer) {
-                    console.log('correct')
-                    var liRemove = olEl.children;
+                    rightDisplay.textContent = 'correct'
                     questionCount++;
                     questionNumber();
                     olEl.remove();                 
                 } else {
-                    console.log('wrong')
-                    var liRemove = olEl.children;
+                    rightDisplay.textContent = 'wrong'
                     questionCount++;
                     questionNumber();
                     olEl.remove();
@@ -218,15 +215,12 @@ function questions() {
 
     }
 
+
     if (questionCount < qA.length) {
         questionNumber();
     }
 
 }
-
-
-
-
 
 
 // index through preset questions with for loop (can be in order; will add random later)
