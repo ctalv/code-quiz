@@ -194,8 +194,9 @@ function questions() {
         // for (var i = 0; i < qA.length; i++) {
         var currentQ = qA[questionCount];
 
-        var h2El = document.querySelector('#questions h2');
+        var h2El = document.createElement('h2');
         var olEl = document.createElement('ol');
+        questionsEl.appendChild(h2El);
         questionsEl.appendChild(olEl);
         console.log(currentQ)
         h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
@@ -225,8 +226,8 @@ function questions() {
                         // endGame();
                     }   
                     
-                    // olEl.remove();     
-                    olEl.textContent = ''             
+                    olEl.remove();
+                    h2El.remove();     
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -239,8 +240,9 @@ function questions() {
                         timer = 0;
                         // endGame();
                     }   
-                    // olEl.remove();
-                    olEl.textContent = '' ;
+                    olEl.remove();
+                    h2El.remove();
+
                 }
 
 
@@ -322,11 +324,13 @@ function enterScore () {
             console.log(scoreStore.score)
         } else {
             var playAgainEl = document.createElement('button')
+            saveButtonEl.remove()
             playAgainEl.innerHTML = 'Play Again'
             enterScoreEl.append(playAgainEl)
             playAgainEl.addEventListener('click', function(event) {
                 event.preventDefault
                 mainEl.childNodes.textContent = '';
+                enterScoreEl.textContent = '';
                 init();
             })
         }
