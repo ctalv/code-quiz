@@ -55,9 +55,9 @@
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
-var viewHighScoreEL = document.querySelector('#high-scores');
-var highScorePageEl = document.querySelector(".wins-losses");
-
+var enterScoreEl = document.querySelector('#scores');
+var highScorePageEl = document.querySelector("#score-page");
+var score = 0;
 
 // function init() to describe start page which will have
 function init() {
@@ -79,7 +79,6 @@ function startPage() {
     startButton.addEventListener('click', questions);
 
 }
-
 
 // click event for highscore view
 // local storage of high score
@@ -232,7 +231,6 @@ function questions() {
 
     }
 
-
     if (questionCount < qA.length) {
         questionNumber();
     } else {
@@ -280,9 +278,21 @@ function endGame() {
     questionsEl.remove();
     timerEl.textContent = timer;
     console.log('GAME OVER')
+    enterScore ();
     
 }
 
+
+function enterScore () {
+    console.log('enter score')
+    var gameOverEl = document.createElement('h2')
+    var initialsEl = document.createElement('input')
+    enterScoreEl.appendChild(gameOverEl)
+    enterScoreEl.appendChild(initialsEl)
+    
+    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+
+}
 
 // function endGame() to
 // tell user score
@@ -293,4 +303,7 @@ function endGame() {
 // without erasing previous
 
 // init() at bottom to call start page
+
+
+
 init();
