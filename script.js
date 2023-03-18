@@ -241,21 +241,9 @@ function questions() {
         questionNumber();
     } else {
         timer = 0;
-        endGame();
+        // endGame();
     }   
 }
-
-
-// index through preset questions with for loop (can be in order; will add random later)
-// var currentQuestion = objectQuestions[i] 
-// display question using html = currentQuestion
-// display options
-// create li children to ul
-// at options have click events on each 
-// pull answer() function
-// counter
-
-
 
 
 var timer = 75
@@ -293,14 +281,23 @@ function enterScore () {
     var gameOverEl = document.createElement('h2')
     var initialsEl = document.createElement('input')
     var scoreEl = document.createElement('p')
+    var saveButtonEl = document.createElement('button')
     // rootEl = 
 
     gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
     scoreEl.textContent = "Your score: " + score;
+    saveButtonEl.innerHTML = 'Save Score'
 
     enterScoreEl.appendChild(gameOverEl)
     enterScoreEl.appendChild(initialsEl)
     enterScoreEl.appendChild(scoreEl)
+    enterScoreEl.appendChild(saveButtonEl)
+     
+var scoreStore = {
+    initials: initialsEl.value,
+    score: score.value,
+}
+    localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
     
 
 }
