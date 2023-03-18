@@ -174,7 +174,8 @@ var qA = [
     }]
 
 function questions() {
-    titleEl.remove();
+    // titleEl.remove();
+    titleEl.innerHTML = ''
     setTime();
 
     var questionCount = 0
@@ -214,7 +215,8 @@ function questions() {
                         // endGame();
                     }   
                     
-                    olEl.remove();                 
+                    // olEl.remove();     
+                    olEl.innerHTML = ''             
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -227,7 +229,8 @@ function questions() {
                         timer = 0;
                         // endGame();
                     }   
-                    olEl.remove();
+                    // olEl.remove();
+                    olEl.innerHTML = '' ;
                 }
 
 
@@ -269,7 +272,8 @@ function setTime() {
 }
 
 function endGame() {
-    questionsEl.remove();
+    // questionsEl.remove();
+    questionsEl.innerHTML = '';
     timerEl.textContent = timer;
     console.log('GAME OVER')
     enterScore ();
@@ -310,7 +314,7 @@ function enterScore () {
             var playAgainEl = document.createElement('button')
             playAgainEl.innerHTML = 'Play Again'
             enterScoreEl.append(playAgainEl)
-            init();
+            startPage();
         }
         
 
