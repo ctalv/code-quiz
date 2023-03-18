@@ -65,7 +65,7 @@ function init() {
     startPage();
     addEventListener.viewScoresEl("click", function() {
         var highScoreTitleEl = document.querySelector("#score-page h2");
-        var listHighScoresEl = document.querySelector("score-page ol")
+        var listHighScoresEl = document.querySelector("#score-page ol")
     })
 }
 
@@ -206,6 +206,7 @@ function questions() {
                     rightDisplay.textContent = 'correct'
                     // olEl.insertBefore(rightWrongDisplay, null)
                     questionCount++;
+                    score++;
                     if (questionCount < qA.length) {
                         questionNumber();
                     } else {
@@ -291,11 +292,15 @@ function enterScore () {
     console.log('enter score')
     var gameOverEl = document.createElement('h2')
     var initialsEl = document.createElement('input')
+    var scoreEl = document.createElement('p')
     // rootEl = 
+
     gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+    scoreEl.textContent = "Your score: " + score;
 
     enterScoreEl.appendChild(gameOverEl)
     enterScoreEl.appendChild(initialsEl)
+    enterScoreEl.appendChild(scoreEl)
     
 
 }
