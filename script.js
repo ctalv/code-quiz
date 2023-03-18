@@ -296,6 +296,7 @@ function enterScore () {
 
     enterScoreEl.appendChild(gameOverEl)
     enterScoreEl.appendChild(initialsEl)
+    
 
 }
 
