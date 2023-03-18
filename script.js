@@ -171,7 +171,6 @@ var qA = [
     }]
 
 function questions() {
-    rootEl.removeAttribute(titleEl);
     titleEl.remove();
     setTime();
 
@@ -182,7 +181,8 @@ function questions() {
         var currentQ = qA[questionCount];
 
         var h2El = document.querySelector('#questions h2');
-        var olEl = document.querySelector('#questions ol');
+        var olEl = document.createElement('ol');
+        questionsEl.appendChild(olEl);
         console.log(currentQ)
         h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
 
@@ -192,24 +192,26 @@ function questions() {
             var liEl = document.createElement('li')
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
-            console.log(currentQ.answer)
+            console.log(olEl.children)
 
             liEl.addEventListener('click', function () {
-                var clickedChoice = this.textContent;
 
+                var clickedChoice = this.textContent;
+                
+                console.log(liRemove)
                 if (clickedChoice === currentQ.answer) {
                     console.log('correct')
+                    var liRemove = olEl.children;
                     questionCount++;
                     questionNumber();
-                    olEl.textContent = ''
-
+                    olEl.remove();                 
                 } else {
                     console.log('wrong')
+                    var liRemove = olEl.children;
                     questionCount++;
                     questionNumber();
-                    olEl.textContent = ''
+                    olEl.remove();
                 }
-
             })
 
         }
