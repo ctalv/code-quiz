@@ -280,7 +280,10 @@ function endGame() {
     questionsEl.remove();
     timerEl.textContent = timer;
     console.log('GAME OVER')
+    
 }
+
+
 // function endGame() to
 // tell user score
 // allow user to add initials
