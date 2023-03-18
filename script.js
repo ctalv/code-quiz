@@ -200,11 +200,14 @@ function questions() {
                 
                 if (clickedChoice === currentQ.answer) {
                     rightDisplay.textContent = 'correct'
+                    // olEl.insertBefore(rightWrongDisplay, null)
                     questionCount++;
                     questionNumber();
                     olEl.remove();                 
                 } else {
                     rightDisplay.textContent = 'wrong'
+                    // olEl.insertBefore(rightWrongDisplay, null)
+                    timer = timer - 15;
                     questionCount++;
                     questionNumber();
                     olEl.remove();
