@@ -202,16 +202,30 @@ function questions() {
                     rightDisplay.textContent = 'correct'
                     // olEl.insertBefore(rightWrongDisplay, null)
                     questionCount++;
-                    questionNumber();
+                    if (questionCount < qA.length) {
+                        questionNumber();
+                    } else {
+                        timer = 0;
+                        endGame();
+                    }   
+                    
                     olEl.remove();                 
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
                     timer = timer - 15;
+
                     questionCount++;
-                    questionNumber();
+                    if (questionCount < qA.length) {
+                        questionNumber();
+                    } else {
+                        timer = 0;
+                        endGame();
+                    }   
                     olEl.remove();
                 }
+
+
             })
 
         }
@@ -221,8 +235,10 @@ function questions() {
 
     if (questionCount < qA.length) {
         questionNumber();
-    }
-
+    } else {
+        timer = 0;
+        endGame();
+    }   
 }
 
 
@@ -248,30 +264,23 @@ function setTime() {
         timer--; // subtract one
         timerEl.textContent = timer;
 
+        if (timer < 0) {
+            timer = 0; 
+        }
         if (timer === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // endGame()
+            endGame();
         }
 
     }, 1000);
 }
 
-function answerChoice() {
-
-
-
-    console.log('clicked')
-    // if user click === answer
-    // add to score
-    // make variable correct
-    // else (wrong or user click !=== answer)
-    // deduct 15 seconds
-    // make variable wrong
-    // display what answer was
+function endGame() {
+    questionsEl.remove();
+    timerEl.textContent = timer;
+    console.log('GAME OVER')
 }
-
-
 // function endGame() to
 // tell user score
 // allow user to add initials
