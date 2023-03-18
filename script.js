@@ -60,10 +60,13 @@ var highScorePageEl = document.querySelector("#score-page");
 var viewScoresEl = document.querySelector('.view-scores')
 var mainEl = document.querySelector('main');
 var score = 0;
+var timer = 75
+var timerEl = document.querySelector('.timer');
+timerEl.textContent = timer;
 
 // function init() to describe start page which will have
 function init() {
-
+    
     startPage();
     addEventListener.viewScoresEl("click", function() {
         // mainEl.innerHTML = '';
@@ -74,6 +77,7 @@ function init() {
 
 function startPage() {
     // titleEl = document.querySelector('#title-page');
+    timer = 75;
     var h1El = document.createElement('h1');
     var pEl = document.createElement('p');
     // var h1El = titleEl.childNodes[1];
@@ -261,9 +265,9 @@ function questions() {
 }
 
 
-var timer = 75
-var timerEl = document.querySelector('.timer');
-timerEl.textContent = timer;
+// var timer = 75
+// var timerEl = document.querySelector('.timer');
+// timerEl.textContent = timer;
 
 function setTime() {
     // Sets interval in variable
