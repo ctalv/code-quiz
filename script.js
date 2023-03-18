@@ -55,20 +55,35 @@
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
-var viewHighScoreEL = document.querySelector('#high-scores');
-var highScorePageEl = document.querySelector(".wins-losses");
-
+var enterScoreEl = document.querySelector('#enter-scores');
+var highScorePageEl = document.querySelector("#score-page");
+var viewScoresEl = document.querySelector('.view-scores')
+var mainEl = document.querySelector('main');
+var score = 0;
 
 // function init() to describe start page which will have
 function init() {
+
     startPage();
+    addEventListener.viewScoresEl("click", function() {
+        // mainEl.innerHTML = '';
+        var highScoreTitleEl = document.querySelector("#score-page h2");
+        var listHighScoresEl = document.querySelector("#score-page ol")
+    })
 }
 
 function startPage() {
     // titleEl = document.querySelector('#title-page');
-    var h1El = titleEl.childNodes[1];
-    var pEl = titleEl.childNodes[2];
+    var h1El = document.createElement('h1');
+    var pEl = document.createElement('p');
+    // var h1El = titleEl.childNodes[1];
+    // var pEl = titleEl.childNodes[2];
     var startButton = document.createElement('button');
+
+    titleEl.appendChild(h1El);
+    titleEl.appendChild(pEl);
+    titleEl.appendChild(startButton);
+
 
     h1El.textContent = "Code Quiz";
     pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Press the start button when you are ready!"
@@ -79,7 +94,6 @@ function startPage() {
     startButton.addEventListener('click', questions);
 
 }
-
 
 // click event for highscore view
 // local storage of high score
@@ -170,7 +184,8 @@ var qA = [
     }]
 
 function questions() {
-    titleEl.remove();
+    // titleEl.remove();
+    titleEl.textContent = ''
     setTime();
 
     var questionCount = 0
@@ -179,8 +194,9 @@ function questions() {
         // for (var i = 0; i < qA.length; i++) {
         var currentQ = qA[questionCount];
 
-        var h2El = document.querySelector('#questions h2');
+        var h2El = document.createElement('h2');
         var olEl = document.createElement('ol');
+        questionsEl.appendChild(h2El);
         questionsEl.appendChild(olEl);
         console.log(currentQ)
         h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
@@ -202,14 +218,16 @@ function questions() {
                     rightDisplay.textContent = 'correct'
                     // olEl.insertBefore(rightWrongDisplay, null)
                     questionCount++;
+                    score++;
                     if (questionCount < qA.length) {
                         questionNumber();
                     } else {
                         timer = 0;
-                        endGame();
+                        // endGame();
                     }   
                     
-                    olEl.remove();                 
+                    olEl.remove();
+                    h2El.remove();     
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -220,9 +238,11 @@ function questions() {
                         questionNumber();
                     } else {
                         timer = 0;
-                        endGame();
+                        // endGame();
                     }   
                     olEl.remove();
+                    h2El.remove();
+
                 }
 
 
@@ -232,26 +252,13 @@ function questions() {
 
     }
 
-
     if (questionCount < qA.length) {
         questionNumber();
     } else {
         timer = 0;
-        endGame();
+        // endGame();
     }   
 }
-
-
-// index through preset questions with for loop (can be in order; will add random later)
-// var currentQuestion = objectQuestions[i] 
-// display question using html = currentQuestion
-// display options
-// create li children to ul
-// at options have click events on each 
-// pull answer() function
-// counter
-
-
 
 
 var timer = 75
@@ -277,12 +284,65 @@ function setTime() {
 }
 
 function endGame() {
-    questionsEl.remove();
+    // questionsEl.remove();
+    questionsEl.textContent = '';
     timerEl.textContent = timer;
     console.log('GAME OVER')
+    enterScore ();
     
 }
 
+function enterScore () {
+    console.log('enter score')
+    var gameOverEl = document.createElement('h2')
+    var initialsEl = document.createElement('input')
+    var scoreEl = document.createElement('p')
+    var saveButtonEl = document.createElement('button')
+
+    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+    scoreEl.textContent = "Your score: " + score;
+    saveButtonEl.innerHTML = 'Save Score'
+
+    enterScoreEl.appendChild(gameOverEl)
+    enterScoreEl.appendChild(initialsEl)
+    enterScoreEl.appendChild(scoreEl)
+    enterScoreEl.appendChild(saveButtonEl)
+
+     saveButtonEl.addEventListener('click', function(event) {
+        event.preventDefault
+
+        var scoreStore = {
+            initials: initialsEl.value,
+            score: score,
+        }
+        console.log(score)
+        localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
+
+        if (scoreStore.initials ==='') {
+            console.log('enter something')
+            console.log(scoreStore.initials)
+            console.log(scoreStore.score)
+        } else {
+            var playAgainEl = document.createElement('button')
+            saveButtonEl.remove()
+            playAgainEl.innerHTML = 'Play Again'
+            enterScoreEl.append(playAgainEl)
+            playAgainEl.addEventListener('click', function(event) {
+                event.preventDefault
+                mainEl.childNodes.textContent = '';
+                enterScoreEl.textContent = '';
+                init();
+            })
+        }
+        
+
+     })
+
+
+    
+    
+
+}
 
 // function endGame() to
 // tell user score
@@ -293,4 +353,7 @@ function endGame() {
 // without erasing previous
 
 // init() at bottom to call start page
+
+
+
 init();
