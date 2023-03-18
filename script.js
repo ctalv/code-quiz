@@ -55,13 +55,18 @@
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
-var enterScoreEl = document.querySelector('#scores');
+var enterScoreEl = document.querySelector('#enter-scores');
 var highScorePageEl = document.querySelector("#score-page");
+var viewScoresEl = document.querySelector('.view-scores')
 var score = 0;
 
 // function init() to describe start page which will have
 function init() {
     startPage();
+    addEventListener.viewScoresEl("click", function() {
+        var highScoreTitleEl = document.querySelector("#score-page h2");
+        var listHighScoresEl = document.querySelector("score-page ol")
+    })
 }
 
 function startPage() {
@@ -282,15 +287,15 @@ function endGame() {
     
 }
 
-
 function enterScore () {
     console.log('enter score')
     var gameOverEl = document.createElement('h2')
     var initialsEl = document.createElement('input')
+    // rootEl = 
+    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+
     enterScoreEl.appendChild(gameOverEl)
     enterScoreEl.appendChild(initialsEl)
-    
-    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
 
 }
 
