@@ -63,9 +63,10 @@ var score = 0;
 
 // function init() to describe start page which will have
 function init() {
+
     startPage();
     addEventListener.viewScoresEl("click", function() {
-        mainEl.innerHTML = '';
+        // mainEl.innerHTML = '';
         var highScoreTitleEl = document.querySelector("#score-page h2");
         var listHighScoresEl = document.querySelector("#score-page ol")
     })
@@ -73,9 +74,16 @@ function init() {
 
 function startPage() {
     // titleEl = document.querySelector('#title-page');
-    var h1El = titleEl.childNodes[1];
-    var pEl = titleEl.childNodes[2];
+    var h1El = document.createElement('h1');
+    var pEl = document.createElement('p');
+    // var h1El = titleEl.childNodes[1];
+    // var pEl = titleEl.childNodes[2];
     var startButton = document.createElement('button');
+
+    titleEl.appendChild(h1El);
+    titleEl.appendChild(pEl);
+    titleEl.appendChild(startButton);
+
 
     h1El.textContent = "Code Quiz";
     pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Press the start button when you are ready!"
@@ -318,7 +326,7 @@ function enterScore () {
             enterScoreEl.append(playAgainEl)
             playAgainEl.addEventListener('click', function(event) {
                 event.preventDefault
-                rootEl.innerHTML = '';
+                mainEl.childNodes.textContent = '';
                 init();
             })
         }
