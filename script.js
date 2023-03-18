@@ -177,7 +177,7 @@ var qA = [
 
 function questions() {
     // titleEl.remove();
-    titleEl.innerHTML = ''
+    titleEl.textContent = ''
     setTime();
 
     var questionCount = 0
@@ -218,7 +218,7 @@ function questions() {
                     }   
                     
                     // olEl.remove();     
-                    olEl.innerHTML = ''             
+                    olEl.textContent = ''             
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -232,7 +232,7 @@ function questions() {
                         // endGame();
                     }   
                     // olEl.remove();
-                    olEl.innerHTML = '' ;
+                    olEl.textContent = '' ;
                 }
 
 
@@ -275,7 +275,7 @@ function setTime() {
 
 function endGame() {
     // questionsEl.remove();
-    questionsEl.innerHTML = '';
+    questionsEl.textContent = '';
     timerEl.textContent = timer;
     console.log('GAME OVER')
     enterScore ();
@@ -318,8 +318,8 @@ function enterScore () {
             enterScoreEl.append(playAgainEl)
             playAgainEl.addEventListener('click', function(event) {
                 event.preventDefault
-                mainEl.innerHTML = '';
-                startPage();
+                rootEl.innerHTML = '';
+                init();
             })
         }
         
