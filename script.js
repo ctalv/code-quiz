@@ -323,8 +323,8 @@ function enterScore () {
         }
         console.log(score)
         localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
-        scoreList = push(scoreStore)
-        console.log(scoreList)
+        // scoreList = push(scoreStore);
+        // console.log(scoreList)
 
         if (scoreStore.initials ==='') {
             console.log('enter something')
