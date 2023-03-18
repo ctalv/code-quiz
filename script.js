@@ -211,7 +211,7 @@ function questions() {
                         questionNumber();
                     } else {
                         timer = 0;
-                        endGame();
+                        // endGame();
                     }   
                     
                     olEl.remove();                 
@@ -225,7 +225,7 @@ function questions() {
                         questionNumber();
                     } else {
                         timer = 0;
-                        endGame();
+                        // endGame();
                     }   
                     olEl.remove();
                 }
@@ -282,7 +282,6 @@ function enterScore () {
     var initialsEl = document.createElement('input')
     var scoreEl = document.createElement('p')
     var saveButtonEl = document.createElement('button')
-    // rootEl = 
 
     gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
     scoreEl.textContent = "Your score: " + score;
@@ -292,12 +291,33 @@ function enterScore () {
     enterScoreEl.appendChild(initialsEl)
     enterScoreEl.appendChild(scoreEl)
     enterScoreEl.appendChild(saveButtonEl)
-     
-var scoreStore = {
-    initials: initialsEl.value,
-    score: score.value,
-}
-    localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
+
+     saveButtonEl.addEventListener('click', function(event) {
+        event.preventDefault
+
+        var scoreStore = {
+            initials: initialsEl.value,
+            score: score,
+        }
+        console.log(score)
+        localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
+
+        if (scoreStore.initials ==='') {
+            console.log('enter something')
+            console.log(scoreStore.initials)
+            console.log(scoreStore.score)
+        } else {
+            var playAgainEl = document.createElement('button')
+            playAgainEl.innerHTML = 'Play Again'
+            enterScoreEl.append(playAgainEl)
+            init();
+        }
+        
+
+     })
+
+
+    
     
 
 }
