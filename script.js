@@ -252,14 +252,8 @@ function questions() {
         questionNumber();
     } else {
         timer = 0;
-        // endGame();
     }
 }
-
-
-// var timer = 75
-// var timerEl = document.querySelector('.timer');
-// timerEl.textContent = timer;
 
 function setTime() {
     // Sets interval in variable
@@ -333,7 +327,7 @@ function enterScore() {
             console.log(scoreForm)
             console.log(scoreList)
             localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
-            localStorage.setItem('scoreList', JSON.stringify(scoreForm));
+            localStorage.setItem('scoreList', JSON.stringify(scoreList));
 
             var playAgainEl = document.createElement('button')
             saveButtonEl.remove()
