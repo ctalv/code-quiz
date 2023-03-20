@@ -56,14 +56,15 @@ var questionsEl = document.querySelector('#questions');
 var enterScoreEl = document.querySelector('#enter-scores');
 var scorePageEl = document.querySelector("#score-page");
 
-var viewScoresEl = document.querySelector('.view-scores')
-var mainEl = document.querySelector('main');
+var viewScoresEl = document.querySelector('.view-scores');
 var timerEl = document.querySelector('.timer');
+var mainEl = document.querySelector('main');
 
 var score = 0;
 var timer = 75
 
 timerEl.textContent = timer;
+viewScoresEl.text = "View High Scores"
 
 // function init() to describe start page which will have
 function init() {
@@ -340,20 +341,20 @@ function enterScore() {
 }
 
 
-function eraseMainPage() {
-    mainEl.childNodes.textContent = '';
-}
+
 
 // function to make score page on click event
 function generateScorePage() {
-    eraseMainPage();
+    titleEl.textContent = '';
+    viewScoresEl.removeEventListener('click', generateScorePage);
+
     var h2El = document.createElement('h2');
     var olEl = document.createElement('ol');
     var liEl = document.createElement('li');
 
     scorePageEl.appendChild(h2El);
     scorePageEl.appendChild(olEl);
-    scorePageEl.appendChild(liEl);
+    
 
     h2El.textContent = 'High Scores';
 
@@ -370,29 +371,38 @@ function generateScorePage() {
 
     var highScores = JSON.parse(localStorage.getItem("scoreList"));
     var liEl = document.createElement('li')
-    olEl.appendChild(liEl);
+    
 
     // console.log(highScores)
 
     if (highScores === null) {
         liEl.textContent = "No scores yet! Be the first!"
+        olEl.appendChild(liEl);
+
     } else {
+
         for (i = 0; i < highScores.initials.length; i++) {
             liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
-            
+            olEl.appendChild(liEl);
         }
     }
 
+
+
+
 }
 
+function eraseMainPage() {
+    mainEl.childNodes.textContent = '';
+}
 
 // function to erase score page on click event
 function eraseScorePage() {
+    
+    viewScoresEl.addEventListener('click', function () {
 
+    });
 }
 
-
-
-
 // init() at bottom to call start page
-init()
+init();
