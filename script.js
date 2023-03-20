@@ -224,13 +224,15 @@ function questions() {
         questionsEl.appendChild(olEl);
         h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
 
+        olEl.classList.add("list-group-numbered", "justify-content-start");
 
         for (var i = 0; i < currentQ.choices.length; i++) {
 
             var liEl = document.createElement('li');
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
-            liEl.classList.add("newClass");
+            
+            liEl.classList.add("list-group-item", "list-group-item-info", "p-2", "m-1");
 
             liEl.addEventListener('click', function () {
 
