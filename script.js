@@ -103,7 +103,7 @@ function startPage() {
 
 
     h1El.textContent = "Code Quiz";
-    pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Press the start button when you are ready!"
+    pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Each question is worth one point. Press the start button when you are ready!"
     startButton.innerText = 'Start'
 
     titleEl.insertBefore(startButton, null)
@@ -339,10 +339,10 @@ function enterScore() {
         console.log(scoreForm)
         var validate = scoreForm.initials.split('')
         if ((scoreForm.initials === '')||(validate.length !== 3) ) {
-            alert('Please enter initials (only 3 letters).');
+            alert('Please enter initials (3 letters).');
 
         } else {
-
+            score = 0;
             initialsListEl.unshift(scoreForm.initials);
             scoresListEl.unshift(scoreForm.score);
 
@@ -367,6 +367,7 @@ function enterScore() {
                 event.preventDefault;
                 eraseMainPage();
                 enterScoreEl.textContent = '';
+                
 
                 init();
             })
