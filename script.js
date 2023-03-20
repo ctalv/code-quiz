@@ -422,6 +422,7 @@ function generateScorePage() {
     } else {
 
         for (i = 0; i < highScores.initials.length; i++) {
+            var liEl = document.createElement('li')
             liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
             olEl.appendChild(liEl);
         }
