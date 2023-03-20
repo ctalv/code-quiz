@@ -347,6 +347,8 @@ function enterScore() {
 function generateScorePage() {
     titleEl.textContent = '';
     viewScoresEl.removeEventListener('click', generateScorePage);
+    viewScoresEl.textContent = "Back to Start Page"
+    viewScoresEl.addEventListener('click', eraseScorePage);
 
     var h2El = document.createElement('h2');
     var olEl = document.createElement('ol');
@@ -398,10 +400,13 @@ function eraseMainPage() {
 
 // function to erase score page on click event
 function eraseScorePage() {
-    
-    viewScoresEl.addEventListener('click', function () {
+    scorePageEl.textContent = ''
+    viewScoresEl.removeEventListener('click', eraseScorePage);
+    viewScoresEl.textContent = "View High Scores"
+    viewScoresEl.addEventListener('click', generateScorePage);
 
-    });
+    init();
+    console.log("worked")
 }
 
 // init() at bottom to call start page
