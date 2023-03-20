@@ -49,8 +49,6 @@
 // init() at bottom to call start page
 
 
-
-
 // declare variables
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
@@ -78,12 +76,9 @@ function init() {
 }
 
 function startPage() {
-    // titleEl = document.querySelector('#title-page');
     timer = 75;
     var h1El = document.createElement('h1');
     var pEl = document.createElement('p');
-    // var h1El = titleEl.childNodes[1];
-    // var pEl = titleEl.childNodes[2];
     var startButton = document.createElement('button');
 
     titleEl.appendChild(h1El);
@@ -189,10 +184,10 @@ var qA = [
     }]
 
 function questions() {
-    titleEl.textContent = ''
+    titleEl.textContent = '';
     setTime();
 
-    var questionCount = 0
+    var questionCount = 0;
 
     function questionNumber() {
         var currentQ = qA[questionCount];
@@ -206,7 +201,7 @@ function questions() {
 
         for (var i = 0; i < currentQ.choices.length; i++) {
 
-            var liEl = document.createElement('li')
+            var liEl = document.createElement('li');
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
 
@@ -216,7 +211,7 @@ function questions() {
                 var rightDisplay = document.createElement('p');
 
                 if (clickedChoice === currentQ.answer) {
-                    rightDisplay.textContent = 'correct'
+                    rightDisplay.textContent = 'correct';
                     questionCount++;
                     score++;
                     if (questionCount < qA.length) {
@@ -278,7 +273,7 @@ function endGame() {
     // questionsEl.remove();
     questionsEl.textContent = '';
     timerEl.textContent = timer;
-    console.log('GAME OVER')
+    console.log('GAME OVER');
     enterScore();
 
 }
@@ -289,19 +284,19 @@ var scoresListEl = [];
 
 
 function enterScore() {
-    var gameOverEl = document.createElement('h2')
-    var initialsEl = document.createElement('input')
-    var scoreEl = document.createElement('p')
-    var saveButtonEl = document.createElement('button')
+    var gameOverEl = document.createElement('h2');
+    var initialsEl = document.createElement('input');
+    var scoreEl = document.createElement('p');
+    var saveButtonEl = document.createElement('button');
 
-    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!';
     scoreEl.textContent = "Your score: " + score;
-    saveButtonEl.innerHTML = 'Save Score'
+    saveButtonEl.innerHTML = 'Save Score';
 
-    enterScoreEl.appendChild(gameOverEl)
-    enterScoreEl.appendChild(initialsEl)
-    enterScoreEl.appendChild(scoreEl)
-    enterScoreEl.appendChild(saveButtonEl)
+    enterScoreEl.appendChild(gameOverEl);
+    enterScoreEl.appendChild(initialsEl);
+    enterScoreEl.appendChild(scoreEl);
+    enterScoreEl.appendChild(saveButtonEl);
 
     saveButtonEl.addEventListener('click', function (event) {
         // event.preventDefault
@@ -312,7 +307,7 @@ function enterScore() {
         }
 
         if (scoreForm.initials === '') {
-            alert('Please enter initials.')
+            alert('Please enter initials.');
      
         } else {
 
@@ -324,17 +319,17 @@ function enterScore() {
                 score: scoresListEl,
             }
 
-            console.log(scoreForm)
-            console.log(scoreList)
+            console.log(scoreForm);
+            console.log(scoreList);
             localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
             localStorage.setItem('scoreList', JSON.stringify(scoreList));
 
             var playAgainEl = document.createElement('button')
-            saveButtonEl.remove()
-            playAgainEl.innerHTML = 'Play Again'
-            enterScoreEl.append(playAgainEl)
+            saveButtonEl.remove();
+            playAgainEl.innerHTML = 'Play Again';
+            enterScoreEl.append(playAgainEl);
             playAgainEl.addEventListener('click', function (event) {
-                event.preventDefault
+                event.preventDefault;
                 eraseMainPage();
                 enterScoreEl.textContent = '';
 
@@ -356,15 +351,15 @@ function eraseMainPage() {
 // function to make score page on click event
 function generateScorePage() {
     eraseMainPage();
-    var h2El = document.createElement('h2')
-    var olEl = document.createElement('ol')
-    var liEl = document.createElement('li')
+    var h2El = document.createElement('h2');
+    var olEl = document.createElement('ol');
+    var liEl = document.createElement('li');
 
     scorePageEl.appendChild(h2El);
     scorePageEl.appendChild(olEl);
     scorePageEl.appendChild(liEl);
     
-    h2El.textContent = 'High Scores'
+    h2El.textContent = 'High Scores';
 
     // make click event 
 
@@ -378,6 +373,15 @@ function generateScorePage() {
 
 
     var highScores = JSON.parse(localStorage.getItem("scoreList"));
+
+    console.log(highScores)
+
+    for (i = 0; i < highScores.initials.length; i++) {
+        var liEl = document.createElement('li')
+        liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
+        olEl.appendChild(liEl);
+
+    }
 
     
 
