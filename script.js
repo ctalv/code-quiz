@@ -69,10 +69,6 @@ timerEl.textContent = timer;
 function init() {
 
     startPage();
-
-    viewScoresEl.addEventListener("click", function () {
-        generateScorePage();
-    })
 }
 
 function startPage() {
@@ -378,7 +374,7 @@ function generateScorePage() {
 
     // console.log(highScores)
 
-    if (highScores.initials == null) {
+    if (highScores === null) {
         liEl.textContent = "No scores yet! Be the first!"
     } else {
         for (i = 0; i < highScores.initials.length; i++) {
