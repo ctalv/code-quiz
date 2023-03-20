@@ -188,21 +188,18 @@ var qA = [
     }]
 
 function questions() {
-    // titleEl.remove();
     titleEl.textContent = ''
     setTime();
 
     var questionCount = 0
 
     function questionNumber() {
-        // for (var i = 0; i < qA.length; i++) {
         var currentQ = qA[questionCount];
 
         var h2El = document.createElement('h2');
         var olEl = document.createElement('ol');
         questionsEl.appendChild(h2El);
         questionsEl.appendChild(olEl);
-        console.log(currentQ)
         h2El.textContent = "Q" + (questionCount + 1) + ": " + currentQ.question;
 
 
@@ -211,7 +208,6 @@ function questions() {
             var liEl = document.createElement('li')
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
-            console.log(olEl.children)
 
             liEl.addEventListener('click', function () {
 
@@ -220,21 +216,18 @@ function questions() {
 
                 if (clickedChoice === currentQ.answer) {
                     rightDisplay.textContent = 'correct'
-                    // olEl.insertBefore(rightWrongDisplay, null)
                     questionCount++;
                     score++;
                     if (questionCount < qA.length) {
                         questionNumber();
                     } else {
                         timer = 0;
-                        // endGame();
                     }
 
                     olEl.remove();
                     h2El.remove();
                 } else {
                     rightDisplay.textContent = 'wrong'
-                    // olEl.insertBefore(rightWrongDisplay, null)
                     timer = timer - 15;
 
                     questionCount++;
@@ -242,7 +235,6 @@ function questions() {
                         questionNumber();
                     } else {
                         timer = 0;
-                        // endGame();
                     }
                     olEl.remove();
                     h2El.remove();
@@ -302,7 +294,6 @@ var scoresListEl = [];
 
 
 function enterScore() {
-    console.log('enter score')
     var gameOverEl = document.createElement('h2')
     var initialsEl = document.createElement('input')
     var scoreEl = document.createElement('p')
@@ -325,24 +316,24 @@ function enterScore() {
             score: score,
         }
 
-        initialsListEl.push(scoreForm.initials);
-        scoresListEl.push(scoreForm.score);
-
-        console.log(initialsListEl);
-        console.log(scoresListEl)
-        // need to save the score and initials in a new item on pbject
-        // need to store object
-
-
-        console.log(score)
-        // console.log(scoreList);
-        localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
-        // scoreList = push(scoreForm);
-        // console.log(scoreList)
 
         if (scoreForm.initials === '') {
-            alert('Please eneter initials.')
+            alert('Please enter initials.')
+     
         } else {
+
+            initialsListEl.push(scoreForm.initials);
+            scoresListEl.push(scoreForm.score);
+
+            var scoreList = {
+                initials: initialsListEl,
+                score: scoresListEl,
+            }
+
+            console.log(scoreForm)
+            console.log(scoreList)
+            localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
+            localStorage.setItem('scoreList', JSON.stringify(scoreForm));
 
             var playAgainEl = document.createElement('button')
             saveButtonEl.remove()
@@ -350,7 +341,7 @@ function enterScore() {
             enterScoreEl.append(playAgainEl)
             playAgainEl.addEventListener('click', function (event) {
                 event.preventDefault
-                mainEl.childNodes.textContent = '';
+                erasePage();
                 enterScoreEl.textContent = '';
 
 
@@ -362,10 +353,26 @@ function enterScore() {
     })
 
 
+}
 
+
+function erasePage() {
+    mainEl.childNodes.textContent = '';
+}
+
+// function to make score page on click event
+function generateScorePage() {
+    erasePage();
+
+    var h2El = document.createElement('h2')
+    var olEl = document.createElement('ol')
+    var liEl = document.createElement('li')
 
 
 }
+
+
+// function to erase score page on click event
 
 // function endGame() to
 // tell user score
