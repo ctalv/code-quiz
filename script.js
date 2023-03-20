@@ -49,39 +49,51 @@
 // init() at bottom to call start page
 
 
-
-
 // declare variables
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
 var questionsEl = document.querySelector('#questions');
 var enterScoreEl = document.querySelector('#enter-scores');
-var highScorePageEl = document.querySelector("#score-page");
-var viewScoresEl = document.querySelector('.view-scores')
+var scorePageEl = document.querySelector("#score-page");
+
+var viewScoresEl = document.querySelector('.view-scores');
+var timerEl = document.querySelector('.timer');
 var mainEl = document.querySelector('main');
+
 var score = 0;
 var timer = 75
-var timerEl = document.querySelector('.timer');
+
 timerEl.textContent = timer;
+viewScoresEl.textContent = "View High Scores"
+
+
+
+if ((localStorage.getItem("scoreList") === null)) {
+    var initialsListEl = [];
+    var scoresListEl = [];
+    console.log(1)
+} else {
+    var highScores = JSON.parse(localStorage.getItem("scoreList"));
+    var initialsListEl = highScores.initials;
+    var scoresListEl = highScores.score;
+    console.log(2)
+}
+
+console.log(highScores)
+
+
+
 
 // function init() to describe start page which will have
 function init() {
 
     startPage();
-    addEventListener.viewScoresEl("click", function () {
-        // mainEl.innerHTML = '';
-        var highScoreTitleEl = document.querySelector("#score-page h2");
-        var listHighScoresEl = document.querySelector("#score-page ol")
-    })
 }
 
 function startPage() {
-    // titleEl = document.querySelector('#title-page');
     timer = 75;
     var h1El = document.createElement('h1');
     var pEl = document.createElement('p');
-    // var h1El = titleEl.childNodes[1];
-    // var pEl = titleEl.childNodes[2];
     var startButton = document.createElement('button');
 
     titleEl.appendChild(h1El);
@@ -96,11 +108,10 @@ function startPage() {
     titleEl.insertBefore(startButton, null)
 
     startButton.addEventListener('click', questions);
+    viewScoresEl.addEventListener('click', generateScorePage);
 
 }
 
-// click event for highscore view
-// local storage of high score
 
 // questions
 var qA = [
@@ -188,10 +199,12 @@ var qA = [
     }]
 
 function questions() {
-    titleEl.textContent = ''
+    viewScoresEl.removeEventListener('click', generateScorePage);
+    viewScoresEl.textContent = ''
+    titleEl.textContent = '';
     setTime();
 
-    var questionCount = 0
+    var questionCount = 0;
 
     function questionNumber() {
         var currentQ = qA[questionCount];
@@ -205,7 +218,7 @@ function questions() {
 
         for (var i = 0; i < currentQ.choices.length; i++) {
 
-            var liEl = document.createElement('li')
+            var liEl = document.createElement('li');
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
 
@@ -215,7 +228,7 @@ function questions() {
                 var rightDisplay = document.createElement('p');
 
                 if (clickedChoice === currentQ.answer) {
-                    rightDisplay.textContent = 'correct'
+                    rightDisplay.textContent = 'correct';
                     questionCount++;
                     score++;
                     if (questionCount < qA.length) {
@@ -277,107 +290,164 @@ function endGame() {
     // questionsEl.remove();
     questionsEl.textContent = '';
     timerEl.textContent = timer;
-    console.log('GAME OVER')
+    console.log('GAME OVER');
     enterScore();
 
 }
 
 
-var initialsListEl = [];
-var scoresListEl = [];
-
 
 function enterScore() {
-    var gameOverEl = document.createElement('h2')
-    var initialsEl = document.createElement('input')
-    var scoreEl = document.createElement('p')
-    var saveButtonEl = document.createElement('button')
 
-    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!'
+    var gameOverEl = document.createElement('h2');
+    var initialsEl = document.createElement('input');
+    var scoreEl = document.createElement('p');
+    var saveButtonEl = document.createElement('button');
+
+    gameOverEl.textContent = 'GAME OVER! Enter your initials to save your score!';
     scoreEl.textContent = "Your score: " + score;
-    saveButtonEl.innerHTML = 'Save Score'
+    saveButtonEl.innerHTML = 'Save Score';
 
-    enterScoreEl.appendChild(gameOverEl)
-    enterScoreEl.appendChild(initialsEl)
-    enterScoreEl.appendChild(scoreEl)
-    enterScoreEl.appendChild(saveButtonEl)
+    enterScoreEl.appendChild(gameOverEl);
+    enterScoreEl.appendChild(initialsEl);
+    enterScoreEl.appendChild(scoreEl);
+    enterScoreEl.appendChild(saveButtonEl);
 
     saveButtonEl.addEventListener('click', function (event) {
-        event.preventDefault
+
 
         var scoreForm = {
             initials: initialsEl.value,
             score: score,
         }
 
-
+        console.log(scoreForm)
         if (scoreForm.initials === '') {
-            alert('Please enter initials.')
-     
+            alert('Please enter initials.');
+
         } else {
 
-            initialsListEl.push(scoreForm.initials);
-            scoresListEl.push(scoreForm.score);
+
+
+
+            
+// if ((localStorage.getItem("scoreList") === null)) {
+//     var initialsListEl = [];
+//     var scoresListEl = [];
+//     console.log(1)
+// } else {
+//     var highScores = JSON.parse(localStorage.getItem("scoreList"));
+//     var initialsListEl = highScores.initials;
+//     var scoresListEl = highScores.score;
+//     console.log(2)
+// }
+
+
+            console.log(scoreForm.initials);
+            console.log(scoreForm.score);
+            console.log(initialsListEl)
+
+            initialsListEl.unshift(scoreForm.initials);
+            scoresListEl.unshift(scoreForm.score);
 
             var scoreList = {
                 initials: initialsListEl,
                 score: scoresListEl,
             }
 
-            console.log(scoreForm)
-            console.log(scoreList)
+            console.log(scoreForm);
+            console.log(scoreList);
             localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
             localStorage.setItem('scoreList', JSON.stringify(scoreList));
 
-            var playAgainEl = document.createElement('button')
-            saveButtonEl.remove()
-            playAgainEl.innerHTML = 'Play Again'
-            enterScoreEl.append(playAgainEl)
-            playAgainEl.addEventListener('click', function (event) {
-                event.preventDefault
-                erasePage();
-                enterScoreEl.textContent = '';
+            viewScoresEl.addEventListener('click', generateScorePage);
+            viewScoresEl.textContent = 'View High Scores'
 
+            var playAgainEl = document.createElement('button')
+            saveButtonEl.remove();
+            playAgainEl.innerHTML = 'Play Again';
+            enterScoreEl.append(playAgainEl);
+            playAgainEl.addEventListener('click', function (event) {
+                event.preventDefault;
+                eraseMainPage();
+                enterScoreEl.textContent = '';
 
                 init();
             })
         }
 
-
     })
 
-
 }
 
 
-function erasePage() {
-    mainEl.childNodes.textContent = '';
-}
+
 
 // function to make score page on click event
 function generateScorePage() {
-    erasePage();
+    titleEl.textContent = '';
+    enterScoreEl.textContent = '';
+    viewScoresEl.removeEventListener('click', generateScorePage);
+    viewScoresEl.textContent = "Back to Start Page"
+    viewScoresEl.addEventListener('click', eraseScorePage);
 
-    var h2El = document.createElement('h2')
-    var olEl = document.createElement('ol')
+    var h2El = document.createElement('h2');
+    var olEl = document.createElement('ol');
+    var liEl = document.createElement('li');
+
+    scorePageEl.appendChild(h2El);
+    scorePageEl.appendChild(olEl);
+
+
+    h2El.textContent = 'High Scores';
+
+    // make click event 
+
+    // pull local storage 
+    // if none then blank with message
+    // else
+    // loop through initials array
+    // loop through score array (plus would be if it ordered it)
+    // place each element in an ordered list (by date for now)
+
+
     var liEl = document.createElement('li')
+
+
+    console.log(highScores)
+
+    if (!initialsListEl[0]) {
+        liEl.textContent = "No scores yet! Be the first!"
+        olEl.appendChild(liEl);
+    } else {
+
+        for (i = 0; i < initialsListEl.length; i++) {
+            var liEl = document.createElement('li')
+            liEl.textContent = initialsListEl[i] + ': ' + scoresListEl[i];
+            olEl.appendChild(liEl);
+        }
+    }
+
+
 
 
 }
 
 
-// function to erase score page on click event
+function eraseMainPage() {
+    mainEl.childNodes.textContent = '';
+}
 
-// function endGame() to
-// tell user score
-// allow user to add initials
-// click event on submit
-// stores score
-// stores associated initals 
-// without erasing previous
+// function to erase score page on click event
+function eraseScorePage() {
+    scorePageEl.textContent = '';
+    viewScoresEl.removeEventListener('click', eraseScorePage);
+    viewScoresEl.textContent = "View High Scores"
+    viewScoresEl.addEventListener('click', generateScorePage);
+
+    init();
+    console.log("worked")
+}
 
 // init() at bottom to call start page
-
-
-
 init();
