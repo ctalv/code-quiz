@@ -70,7 +70,7 @@ function init() {
 
     startPage();
 
-    addEventListener.viewScoresEl("click", function () {
+    viewScoresEl.addEventListener("click", function () {
         generateScorePage();
     })
 }
@@ -308,7 +308,7 @@ function enterScore() {
 
         if (scoreForm.initials === '') {
             alert('Please enter initials.');
-     
+
         } else {
 
             initialsListEl.push(scoreForm.initials);
@@ -358,41 +358,40 @@ function generateScorePage() {
     scorePageEl.appendChild(h2El);
     scorePageEl.appendChild(olEl);
     scorePageEl.appendChild(liEl);
-    
+
     h2El.textContent = 'High Scores';
 
     // make click event 
 
     // pull local storage 
-        // if none then blank with message
-        // else
-            // loop through initials array
-            // loop through score array (plus would be if it ordered it)
-            // place each element in an ordered list (by date for now)
+    // if none then blank with message
+    // else
+    // loop through initials array
+    // loop through score array (plus would be if it ordered it)
+    // place each element in an ordered list (by date for now)
 
 
 
     var highScores = JSON.parse(localStorage.getItem("scoreList"));
+    var liEl = document.createElement('li')
+    olEl.appendChild(liEl);
 
-    console.log(highScores)
+    // console.log(highScores)
 
-    for (i = 0; i < highScores.initials.length; i++) {
-        var liEl = document.createElement('li')
-        liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
-        olEl.appendChild(liEl);
-
+    if (highScores.initials == null) {
+        liEl.textContent = "No scores yet! Be the first!"
+    } else {
+        for (i = 0; i < highScores.initials.length; i++) {
+            liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
+            
+        }
     }
-
-    
-
-
-    
 
 }
 
 
 // function to erase score page on click event
-function eraseScorePage () {
+function eraseScorePage() {
 
 }
 
@@ -400,4 +399,4 @@ function eraseScorePage () {
 
 
 // init() at bottom to call start page
-init();
+init()
