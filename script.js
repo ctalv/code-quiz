@@ -230,6 +230,7 @@ function questions() {
             var liEl = document.createElement('li');
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
+            liEl.classList.add("newClass");
 
             liEl.addEventListener('click', function () {
 
