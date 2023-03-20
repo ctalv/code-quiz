@@ -110,9 +110,10 @@ function startPage() {
     startButton.addEventListener('click', questions);
     document.addEventListener('keyup', function(event) {
         console.log(1)
-        if (event.code === 13) {
+        console.log(event)
+        if (event.code === 'Enter') {
             event.preventDefault();
-            questions;
+            questions();
             console.log(2)
         }
     });
