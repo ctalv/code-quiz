@@ -66,9 +66,9 @@ timerEl.textContent = timer;
 
 // function init() to describe start page which will have
 function init() {
-    
+
     startPage();
-    addEventListener.viewScoresEl("click", function() {
+    addEventListener.viewScoresEl("click", function () {
         // mainEl.innerHTML = '';
         var highScoreTitleEl = document.querySelector("#score-page h2");
         var listHighScoresEl = document.querySelector("#score-page ol")
@@ -217,7 +217,7 @@ function questions() {
 
                 var clickedChoice = this.textContent;
                 var rightDisplay = document.createElement('p');
-                
+
                 if (clickedChoice === currentQ.answer) {
                     rightDisplay.textContent = 'correct'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -228,10 +228,10 @@ function questions() {
                     } else {
                         timer = 0;
                         // endGame();
-                    }   
-                    
+                    }
+
                     olEl.remove();
-                    h2El.remove();     
+                    h2El.remove();
                 } else {
                     rightDisplay.textContent = 'wrong'
                     // olEl.insertBefore(rightWrongDisplay, null)
@@ -243,7 +243,7 @@ function questions() {
                     } else {
                         timer = 0;
                         // endGame();
-                    }   
+                    }
                     olEl.remove();
                     h2El.remove();
 
@@ -261,7 +261,7 @@ function questions() {
     } else {
         timer = 0;
         // endGame();
-    }   
+    }
 }
 
 
@@ -276,7 +276,7 @@ function setTime() {
         timerEl.textContent = timer;
 
         if (timer < 0) {
-            timer = 0; 
+            timer = 0;
         }
         if (timer === 0) {
             // Stops execution of action at set interval
@@ -292,13 +292,16 @@ function endGame() {
     questionsEl.textContent = '';
     timerEl.textContent = timer;
     console.log('GAME OVER')
-    enterScore ();
-    
+    enterScore();
+
 }
 
-var scoreList = [];
 
-function enterScore () {
+var initialsListEl = [];
+var scoresListEl = [];
+
+
+function enterScore() {
     console.log('enter score')
     var gameOverEl = document.createElement('h2')
     var initialsEl = document.createElement('input')
@@ -314,41 +317,53 @@ function enterScore () {
     enterScoreEl.appendChild(scoreEl)
     enterScoreEl.appendChild(saveButtonEl)
 
-     saveButtonEl.addEventListener('click', function(event) {
+    saveButtonEl.addEventListener('click', function (event) {
         event.preventDefault
 
-        var scoreStore = {
+        var scoreForm = {
             initials: initialsEl.value,
             score: score,
         }
+
+        initialsListEl.push(scoreForm.initials);
+        scoresListEl.push(scoreForm.score);
+
+        console.log(initialsListEl);
+        console.log(scoresListEl)
+        // need to save the score and initials in a new item on pbject
+        // need to store object
+
+
         console.log(score)
-        localStorage.setItem('scoreStore', JSON.stringify(scoreStore));
-        // scoreList = push(scoreStore);
+        // console.log(scoreList);
+        localStorage.setItem('scoreForm', JSON.stringify(scoreForm));
+        // scoreList = push(scoreForm);
         // console.log(scoreList)
 
-        if (scoreStore.initials ==='') {
-            console.log('enter something')
-            console.log(scoreStore.initials)
-            console.log(scoreStore.score)
+        if (scoreForm.initials === '') {
+            alert('Please eneter initials.')
         } else {
+
             var playAgainEl = document.createElement('button')
             saveButtonEl.remove()
             playAgainEl.innerHTML = 'Play Again'
             enterScoreEl.append(playAgainEl)
-            playAgainEl.addEventListener('click', function(event) {
+            playAgainEl.addEventListener('click', function (event) {
                 event.preventDefault
                 mainEl.childNodes.textContent = '';
                 enterScoreEl.textContent = '';
+
+
                 init();
             })
         }
-        
-
-     })
 
 
-    
-    
+    })
+
+
+
+
 
 }
 
