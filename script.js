@@ -440,7 +440,7 @@ function eraseMainPage() {
 
 // function to erase score page on click event
 function eraseScorePage() {
-    scorePageEl.style.display = 'none';
+    scorePageEl.textContent = '';
     viewScoresEl.removeEventListener('click', eraseScorePage);
     viewScoresEl.textContent = "View High Scores"
     viewScoresEl.addEventListener('click', generateScorePage);
