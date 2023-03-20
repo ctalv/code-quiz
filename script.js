@@ -316,36 +316,21 @@ function enterScore() {
     saveButtonEl.addEventListener('click', function (event) {
 
 
+        // initialsEl = initialsEl.toUpperCase();
+
         var scoreForm = {
             initials: initialsEl.value,
             score: score,
         }
 
+        scoreForm.initials = scoreForm.initials.toUpperCase();
+
         console.log(scoreForm)
-        if (scoreForm.initials === '') {
-            alert('Please enter initials.');
+        var validate = scoreForm.initials.split('')
+        if ((scoreForm.initials === '')||(validate.length > 3) ) {
+            alert('Please enter initials (only 3 letters).');
 
         } else {
-
-
-
-
-            
-// if ((localStorage.getItem("scoreList") === null)) {
-//     var initialsListEl = [];
-//     var scoresListEl = [];
-//     console.log(1)
-// } else {
-//     var highScores = JSON.parse(localStorage.getItem("scoreList"));
-//     var initialsListEl = highScores.initials;
-//     var scoresListEl = highScores.score;
-//     console.log(2)
-// }
-
-
-            console.log(scoreForm.initials);
-            console.log(scoreForm.score);
-            console.log(initialsListEl)
 
             initialsListEl.unshift(scoreForm.initials);
             scoresListEl.unshift(scoreForm.score);
