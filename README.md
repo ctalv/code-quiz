@@ -29,7 +29,7 @@ N/A
 
 ## Usage
 
-Webpage: https://ctalv.github.io/portfolio_claire_alverson/
+Webpage: https://ctalv.github.io/code_quiz/
 
 ![Portfolio Screenshot](assets/images/screenshot.jpeg)
 
@@ -37,9 +37,9 @@ Webpage: https://ctalv.github.io/portfolio_claire_alverson/
 
 HTML Boilerplate: https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/
 
-Nav tag outside of Header tag: https://dev.to/masakudamatsu/don-t-nest-nav-inside-header-do-nest-the-hamburger-menu-button-inside-nav-6cp 
+Bootstrap Version: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
-Images: (individual credit given in alt tags of photos) https://unsplash.com/ 
+Questions from ChatGTP (conversation included in assets/chatgtp/)
 
 ## License
 
