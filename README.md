@@ -39,7 +39,7 @@ HTML Boilerplate: https://www.freecodecamp.org/news/basic-html5-template-boilerp
 
 Bootstrap Version: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
-Questions from ChatGTP (conversation included in assets/chatgtp/)
+Questions from ChatGTP (conversation included in assets/chatgtp/Code Quiz Challenge ChatGTP Questions.txt)
 
 ## License
 

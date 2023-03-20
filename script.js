@@ -1,54 +1,3 @@
-// declare id root variable
-// declare class title page variable
-// declare class question variable
-// declare counter variable
-
-// function init() to describe start page which will have
-// title
-// description
-// button 'start quiz'
-
-// click event for highscore view
-// local storage of high score
-
-// click event for start quiz
-// timer starts
-// pulls questions() function
-
-// function questions()
-// create h2 child to question var
-// create ul child to question var
-// index through preset questions with for loop (can be in order; will add random later)
-// var currentQuestion = objectQuestions[i] 
-// display question using html = currentQuestion
-// display options
-// create li children to ul
-// at options have click events on each 
-// pull answer() function
-// counter
-
-// function answer() 
-// click event on the selected answer (not in this function)
-// if user select correct
-// logs score
-// sets variable to correct
-// else 
-// takes off 15 seconds from clock
-// sets variable to wrong
-// continues to next question (not in this function)
-// display answer below (now new) question
-
-// function endGame() to
-// tell user score
-// allow user to add initials
-// click event on submit
-// stores score
-// stores associated initals 
-// without erasing previous
-
-// init() at bottom to call start page
-
-
 // declare variables
 var rootEl = document.querySelector('#root');
 var titleEl = document.querySelector('#title-page');
@@ -63,36 +12,28 @@ var mainEl = document.querySelector('main');
 var score = 0;
 var timer = 75;
 
-timerEl.textContent = timer;
+// add text to nav bar elements
 viewScoresEl.textContent = "View High Scores"
 
-
-
+// checks if there are already score stored in local storage
 if ((localStorage.getItem("scoreList") === null)) {
     var initialsListEl = [];
     var scoresListEl = [];
-    console.log(1)
 } else {
     var highScores = JSON.parse(localStorage.getItem("scoreList"));
     var initialsListEl = highScores.initials;
     var scoresListEl = highScores.score;
-    console.log(2)
 }
 
-console.log(highScores)
-
-
-
-
-// function init() to describe start page which will have
+// function calls start page and sets timer
 function init() {
     timer = 75;
     timerEl.textContent = timer;
     startPage();
 }
 
+// generates the start page
 function startPage() {
-    // timer = 75;
     var h1El = document.createElement('h1');
     var pEl = document.createElement('p');
     var startButton = document.createElement('button');
@@ -101,12 +42,12 @@ function startPage() {
     titleEl.appendChild(pEl);
     titleEl.appendChild(startButton);
 
-
     h1El.textContent = "Code Quiz";
-    pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Each question is worth one point. Press the start button when you are ready!"
-    startButton.innerText = 'Start'
+    pEl.textContent = "Take this quiz to test your coding knowledge! You will have 75 seconds to complete the quiz. Any wrong answers deduct 15 second from your score. Each question is worth one point. Press the start button when you are ready!";
+    startButton.innerText = 'Start';
 
-    titleEl.insertBefore(startButton, null)
+    // add start button
+    titleEl.insertBefore(startButton, null);
 
     startButton.addEventListener('click', questions);
     // FUTURE ME: add enter keyup eventlistener
@@ -116,7 +57,7 @@ function startPage() {
     //         questions();
     //     }
     // });
-    
+
     viewScoresEl.addEventListener('click', generateScorePage);
 
 }
@@ -207,9 +148,10 @@ var qA = [
         answer: 'An action triggered by user interaction with a web page'
     }]
 
+// generates questions
 function questions() {
     viewScoresEl.removeEventListener('click', generateScorePage);
-    viewScoresEl.textContent = ''
+    viewScoresEl.textContent = '';
     titleEl.textContent = '';
     setTime();
 
@@ -231,9 +173,8 @@ function questions() {
             var liEl = document.createElement('li');
             liEl.textContent = currentQ.choices[i];
             olEl.appendChild(liEl);
-            
-            liEl.classList.add("list-group-item", "list-group-item-info", "p-2", "m-1");
 
+            liEl.classList.add("list-group-item", "list-group-item-info", "p-2", "m-1");
             liEl.addEventListener('click', function () {
 
                 var clickedChoice = this.textContent;
@@ -246,7 +187,7 @@ function questions() {
                     if (questionCount < qA.length) {
                         questionNumber();
                     } else {
-                        timer = 0;
+                        timer = 0; 
                     }
 
                     olEl.remove();
@@ -280,6 +221,7 @@ function questions() {
     }
 }
 
+// starts times
 function setTime() {
     // Sets interval in variable
     var timerInterval = setInterval(function () {
@@ -290,7 +232,7 @@ function setTime() {
             timer = 0;
         }
         if (timer === 0) {
-            // Stops execution of action at set interval
+            // stops execution of action at set interval (calls end game)
             clearInterval(timerInterval);
             endGame();
         }
@@ -326,7 +268,7 @@ function enterScore() {
     enterScoreEl.appendChild(saveButtonEl);
 
 
-    
+
     saveButtonEl.addEventListener('click', function (event) {
 
 
@@ -341,7 +283,7 @@ function enterScore() {
 
         console.log(scoreForm)
         var validate = scoreForm.initials.split('')
-        if ((scoreForm.initials === '')||(validate.length !== 3) ) {
+        if ((scoreForm.initials === '') || (validate.length !== 3)) {
             alert('Please enter initials (3 letters).');
 
         } else {
@@ -370,7 +312,7 @@ function enterScore() {
                 event.preventDefault;
                 eraseMainPage();
                 enterScoreEl.textContent = '';
-                
+
 
                 init();
             })
@@ -401,15 +343,6 @@ function generateScorePage() {
 
     h2El.textContent = 'High Scores';
 
-    // make click event 
-
-    // pull local storage 
-    // if none then blank with message
-    // else
-    // loop through initials array
-    // loop through score array (plus would be if it ordered it)
-    // place each element in an ordered list (by date for now)
-
 
     var liEl = document.createElement('li')
 
@@ -428,11 +361,7 @@ function generateScorePage() {
         }
     }
 
-
-
-
 }
-
 
 function eraseMainPage() {
     mainEl.childNodes.textContent = '';
