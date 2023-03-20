@@ -1,19 +1,27 @@
-# Portfolio: Claire Alverson
+# Code Quiz
 
 ## Description
 
-This is a webpage to display my work. 
+This is a webpage designed to test users on a preset ofcoding questions.
 
-This was a practice in advanced CSS including but not limited to:
-- :root element
-- flexbox
-- grid
-- linear gradients
-- media query
+This was mainly a practice in JS including but not limited to:
+- query seclectors
+- creating and calling functions
+- objects
+- time intervals
+- event listeners
+- local storage
+- DOM traversal
+- generating and removing elements
 
-Over the course of the bootamp new content will be added. This includes all of the smaller weekly challenges (which should sum to 22) and the three group projects.
 
-Once I am nearing or have graduated, I will modify this README to better align with what employers would look for in a portfolio's README.
+In the future, a few features will be added:
+- keyup event listener on enter key for start button
+- keyup event listener on enter key for save score button
+- keyup event listener on enter key for "Play Again" button
+- keyup event listeners on 1, 2, 3, and 4, keys for selecting answer choices
+- display if previous questions was right or wrong to user
+
 
 ## Installation
 
@@ -37,5 +45,5 @@ Images: (individual credit given in alt tags of photos) https://unsplash.com/
 
 MIT License
 
-# Module_2_Challenge
+# Module_4_Challenge
 
