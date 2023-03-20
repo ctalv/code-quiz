@@ -9,7 +9,7 @@ main {
     justify-content: space-between;
   }
   
-  #title-page #questions {
+  #title-page, #questions, #score-page {
     display: flex;
     justify-content: center;
     align-items: center;
