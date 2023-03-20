@@ -108,6 +108,14 @@ function startPage() {
     titleEl.insertBefore(startButton, null)
 
     startButton.addEventListener('click', questions);
+    document.addEventListener('keyup', function(event) {
+        console.log(1)
+        if (event.code === 13) {
+            event.preventDefault();
+            questions;
+            console.log(2)
+        }
+    });
     viewScoresEl.addEventListener('click', generateScorePage);
 
 }
