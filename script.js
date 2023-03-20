@@ -416,14 +416,14 @@ function generateScorePage() {
 
     console.log(highScores)
 
-    if (highScores === null) {
+    if (!initialsListEl[0]) {
         liEl.textContent = "No scores yet! Be the first!"
         olEl.appendChild(liEl);
     } else {
 
-        for (i = 0; i < highScores.initials.length; i++) {
+        for (i = 0; i < initialsListEl.length; i++) {
             var liEl = document.createElement('li')
-            liEl.textContent = highScores.initials[i] + ': ' + highScores.score[i];
+            liEl.textContent = initialsListEl[i] + ': ' + scoresListEl[i];
             olEl.appendChild(liEl);
         }
     }
