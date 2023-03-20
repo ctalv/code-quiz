@@ -61,7 +61,7 @@ var timerEl = document.querySelector('.timer');
 var mainEl = document.querySelector('main');
 
 var score = 0;
-var timer = 75
+var timer = 75;
 
 timerEl.textContent = timer;
 viewScoresEl.textContent = "View High Scores"
@@ -86,12 +86,13 @@ console.log(highScores)
 
 // function init() to describe start page which will have
 function init() {
-
+    timer = 75;
+    timerEl.textContent = timer;
     startPage();
 }
 
 function startPage() {
-    timer = 75;
+    // timer = 75;
     var h1El = document.createElement('h1');
     var pEl = document.createElement('p');
     var startButton = document.createElement('button');
@@ -108,15 +109,14 @@ function startPage() {
     titleEl.insertBefore(startButton, null)
 
     startButton.addEventListener('click', questions);
-    document.addEventListener('keyup', function(event) {
-        console.log(1)
-        console.log(event)
-        if (event.code === 'Enter') {
-            event.preventDefault();
-            questions();
-            console.log(2)
-        }
-    });
+    // FUTURE ME: add enter keyup eventlistener
+    // document.addEventListener('keyup', function(event) {
+    //     if (event.code === 'Enter') {
+    //         event.preventDefault();
+    //         questions();
+    //     }
+    // });
+    
     viewScoresEl.addEventListener('click', generateScorePage);
 
 }
@@ -322,6 +322,8 @@ function enterScore() {
     enterScoreEl.appendChild(scoreEl);
     enterScoreEl.appendChild(saveButtonEl);
 
+
+    
     saveButtonEl.addEventListener('click', function (event) {
 
 
@@ -336,7 +338,7 @@ function enterScore() {
 
         console.log(scoreForm)
         var validate = scoreForm.initials.split('')
-        if ((scoreForm.initials === '')||(validate.length > 3) ) {
+        if ((scoreForm.initials === '')||(validate.length !== 3) ) {
             alert('Please enter initials (only 3 letters).');
 
         } else {
